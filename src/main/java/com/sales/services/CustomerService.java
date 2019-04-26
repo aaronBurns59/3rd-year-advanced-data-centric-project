@@ -16,4 +16,9 @@ public class CustomerService
 	{ 
 		return (ArrayList<Customer>) cr.findAll();
 	}// findCustomers
+	
+	public Customer saveCustomer(Customer customer)
+	{
+		return cr.save(customer);
+	}// saveCustomer
 }// CustomerService

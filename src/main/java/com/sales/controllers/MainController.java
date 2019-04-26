@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sales.models.Book;
 import com.sales.models.Customer;
+import com.sales.models.Loan;
 import com.sales.services.BookService;
 import com.sales.services.CustomerService;
+import com.sales.services.LoanService;
 
 @Controller
 public class MainController
 {
+	
+//BOOK//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Autowired
 	BookService bs;
 	
@@ -52,17 +56,68 @@ public class MainController
 		bs.saveBook(book);
 		return "redirect:showBooks";
 	}// addBookPost
+//CUSTOMER////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Autowired
 	CustomerService cs;
 	
-	@RequestMapping(value ="/showCustomers", method=RequestMethod.GET)
+	@RequestMapping(value="/showCustomers", method=RequestMethod.GET)
 	public String getCustomers(Model m)
 	{
 		ArrayList<Customer> customers = cs.findCustomers();
 		m.addAttribute("customers", customers);
 		return "showCustomers";
 	}// getCustomers
+	
+	@RequestMapping(value="/addCustomer", method=RequestMethod.GET)
+	public String addCustomerGet(@ModelAttribute("customerAdd") Customer c, HttpServletRequest h)
+	{
+		return "addCustomer";
+	}// addCustomerGet
+	
+	@RequestMapping(value = "/addCustomer", method=RequestMethod.POST)
+	public String addCustomerPost(@Valid @ModelAttribute("customerAdd") Customer customer, BindingResult res, Model m)
+	{
+		if(res.hasErrors())
+		{
+			return "addCustomer";
+		}// if
+		cs.saveCustomer(customer);
+		return "redirect;showCustomers";
+	}// addCustomerPost
+	
+	
+//LOAN//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	@Autowired
+	LoanService ls;
+	
+	@RequestMapping(value="/showLoans", method=RequestMethod.GET)
+	public String getLoans(Model m)
+	{
+		ArrayList<Loan> loans = ls.findLoans();
+		m.addAttribute("loans", loans);
+		return "showLoans";
+	}//getLoans
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }// MainContoller
