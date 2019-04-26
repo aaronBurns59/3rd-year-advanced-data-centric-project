@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.sales.models.Book;
 import com.sales.models.Customer;
 import com.sales.models.Loan;
@@ -57,7 +56,6 @@ public class MainController
 		return "redirect:showBooks";
 	}// addBookPost
 //CUSTOMER////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
 	@Autowired
 	CustomerService cs;
 	
@@ -83,10 +81,8 @@ public class MainController
 			return "addCustomer";
 		}// if
 		cs.saveCustomer(customer);
-		return "redirect;showCustomers";
+		return "redirect:showCustomers";
 	}// addCustomerPost
-	
-	
 //LOAN//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Autowired
