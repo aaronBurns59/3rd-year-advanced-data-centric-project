@@ -38,7 +38,7 @@ public class MainController
 	
 	// Get Method for reading data from the books DB in order to change using the addBook page
 	@RequestMapping(value = "/addBook", method=RequestMethod.GET)
-	public String addBookGet(@ModelAttribute("bookAdd") Book b, HttpServletRequest h)
+	public String addBookGet(@ModelAttribute("bookAdd") Book book, HttpServletRequest h)
 	{
 		return "addBook";
 	}// addBookGet
@@ -68,7 +68,7 @@ public class MainController
 	}// getCustomers
 	
 	@RequestMapping(value="/addCustomer", method=RequestMethod.GET)
-	public String addCustomerGet(@ModelAttribute("customerAdd") Customer c, HttpServletRequest h)
+	public String addCustomerGet(@ModelAttribute("customerAdd") Customer customer, HttpServletRequest h)
 	{
 		return "addCustomer";
 	}// addCustomerGet
@@ -95,8 +95,23 @@ public class MainController
 		m.addAttribute("loans", loans);
 		return "showLoans";
 	}//getLoans
+		
+	@RequestMapping(value="/newLoan", method=RequestMethod.GET)
+	public String newLoanGet(@ModelAttribute("loanNew") Loan loan, HttpServletRequest h)
+	{
+		return "newLoan";
+	}// addCustomerGet
 	
-	
+	@RequestMapping(value = "/newLoan", method=RequestMethod.POST)
+	public String newLoanrPost(@Valid @ModelAttribute("loanNew") Loan loan, BindingResult res, Model m)
+	{
+		if(res.hasErrors())
+		{
+			return "newLoan";
+		}// if
+		ls.saveLoan(loan);
+		return "redirect:showLoans";
+	}// addCustomerPost
 	
 	
 	

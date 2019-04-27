@@ -3,6 +3,7 @@ package com.sales.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sales.models.Book;
 import com.sales.models.Loan;
 import com.sales.repositories.LoanRepository;
 import java.util.*;
@@ -17,6 +18,9 @@ public class LoanService
 	{
 		return (ArrayList<Loan>) lr.findAll();
 	}// findLoans
-	
-	
+		
+    public Loan saveLoan(Loan loan)
+    {
+    	return lr.save(loan);
+    }//saveBook
 }// LoanService

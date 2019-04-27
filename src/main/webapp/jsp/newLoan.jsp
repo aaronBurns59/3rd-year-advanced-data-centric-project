@@ -7,24 +7,24 @@
 		<title>ADCWA Final Project</title>
 	</head>
 		<body>
-			<h1>Add New Book</h1>
-			<form:form modelAttribute="bookAdd">
+			<h1>New Loan</h1>
+			<form:form modelAttribute="loanNew">
 				<table>
 					<tr>
-						<td>Title: </td>
-						<td><form:input path="title"></form:input></td>
-						<td><form:errors path="title"></form:errors></td>
+						<td>Customer ID: </td>
+						<td><form:input path="cust.cId"></form:input></td>
+						<td><form:errors path="cust.cId"></form:errors></td>
 					</tr>
 					<tr>
-						<td>Author: </td>
-						<td><form:input path="author"></form:input></td>
-						<td><form:errors path="author"></form:errors></td>
+						<td>Book ID: </td>
+						<td><form:input path="book.bid"></form:input></td>
+						<td><form:errors path="book.bid"></form:errors></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="Add"/></td>
 					</tr>
 				</table>
 			</form:form>
-			<a href="/">Home</a> <a href="addBook">Add Book</a> <a href="addCustomer">Add Customer</a> <a href="addLoan">New Loan</a>
+			<a href="/">Home</a> <a href="showBooks">List Book</a> <a href="showCustomers">List Customer</a> <a href="showLoans">List Loan</a>
 		</body>
 </html>
