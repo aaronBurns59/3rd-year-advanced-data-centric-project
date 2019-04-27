@@ -31,6 +31,6 @@
 	            </i:forEach>
 	        </tr>
 		</table>
-		<a href="/">Home</a> <a href="/addBook">Add Book</a> <a href="showCustomers">List Customers</a> <a href="showLoans">List Loans</a> <a href="deleteLoan">Delete Loan</a>
+		<a href="/">Home</a> <a href="/addBook">Add Book</a> <a href="showCustomers">List Customers</a> <a href="showLoans">List Loans</a> <a href="deleteLoan">Delete Loan</a> <a href="/logout">Logout</a>
 	</body>
 </html>

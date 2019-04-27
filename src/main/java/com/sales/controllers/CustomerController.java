@@ -19,5 +19,30 @@ import com.sales.services.CustomerService;
 @Controller
 public class CustomerController
 {
-
+	@Autowired
+	CustomerService cs;
+	
+	@RequestMapping(value="/showCustomers", method=RequestMethod.GET)
+	public String getCustomers(Model m)
+	{
+		ArrayList<Customer> customers = cs.findCustomers();
+		m.addAttribute("customers", customers);
+		return "showCustomers";
+	}// getCustomers
+	
+	@RequestMapping(value="/addCustomer", method=RequestMethod.GET)
+	public String addCustomerGet(@ModelAttribute("customerAdd") Customer customer, HttpServletRequest h)
+	{
+		return "addCustomer";
+	}// addCustomerGet
+	
+	@RequestMapping(value="/addCustomer", method=RequestMethod.POST)
+	public String addCustomerPost(@Valid @ModelAttribute("customerAdd") Customer customer, BindingResult res)
+	{
+		if(res.hasErrors())
+			return "addCustomer";
+		
+		cs.saveCustomer(customer);
+		return "redirect:showCustomers";
+	}// addCustomerPost
 }// CustomerController

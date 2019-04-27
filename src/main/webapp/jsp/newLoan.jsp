@@ -25,6 +25,6 @@
 					</tr>
 				</table>
 			</form:form>
-			<a href="/">Home</a> <a href="showBooks">List Book</a> <a href="showCustomers">List Customer</a> <a href="showLoans">List Loan</a>
+			<a href="/">Home</a> <a href="showBooks">List Books</a> <a href="showCustomers">List Customers</a> <a href="showLoans">List Loans</a>
 		</body>
 </html>
